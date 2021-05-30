@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "scannerapplication",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "scannerapplication (Flutter)",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
