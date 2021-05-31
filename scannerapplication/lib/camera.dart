@@ -5,6 +5,7 @@ import 'package:scannerapplication/HomePage.dart';
 import 'dart:async';
 import 'ocr_engine.dart';
 import 'package:image/image.dart' as imglib;
+import 'process.dart';
 
 class OcrApp extends StatelessWidget {
   @override
@@ -206,11 +207,24 @@ class Scanned extends StatefulWidget {
 }
 
 class _ScannedState extends State<Scanned> {
-   TextEditingController t1 = TextEditingController();
+  TextEditingController date = TextEditingController();
+  TextEditingController price = TextEditingController();
+  TextEditingController company = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    Processor TP = Processor();
+    
+    date.text = TP.date_finder(widget.text);
+    company.text = TP.company_finder(widget.text);
+    price.text = TP.price_finder(widget.text);
+  }
+
   savefile(){
-    FirebaseFirestore.instance.collection("Doküman").doc(t1.text).set({
+    FirebaseFirestore.instance.collection(company.text).doc(date.text).set({
+      'toplam': price.text,
       'doküman': widget.text,
-      'baslik': t1.text,
+      'baslik': date.text,
     }).whenComplete(() => print("Yazı eklendi"));
     Navigator.pushAndRemoveUntil(
           context,
@@ -231,11 +245,24 @@ class _ScannedState extends State<Scanned> {
         leading: Image.asset('assets/images/purplelogo.png', fit : BoxFit.contain, height: 72,),
         title: Text('Display the Result Text')
         ),
-      body: Column(
+      body: ListView(
         children: [
-          Text(widget.text),
-          Container(
-          child: TextField(controller: t1,),
+          //Text(widget.text),
+          ListTile(
+            leading: Icon(Icons.receipt_long_rounded,color: Colors.purple,),
+            title: Text(widget.text),
+          ),
+          ListTile(
+            leading: Icon(Icons.business_outlined,color: Colors.purple,),
+            title: TextField(controller: company),
+          ),
+          ListTile(
+            leading: Icon(Icons.date_range_outlined,color: Colors.purple,),
+            title: TextField(controller: date),
+          ),
+          ListTile(
+            leading: Icon(Icons.attach_money_outlined,color: Colors.purple,),
+            title: TextField(controller: price),
           ),
           RaisedButton(
             padding: EdgeInsets.fromLTRB(50, 10, 50, 10),
