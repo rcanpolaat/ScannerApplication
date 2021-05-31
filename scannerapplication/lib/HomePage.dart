@@ -64,7 +64,9 @@ class _HomePageState extends State<HomePage> {
               child: CircularProgressIndicator(),
             );
           }
-
+          return ListView(
+            children: 
+          ,)
           return ListView(
             children: snapshot.data.docs.map((document) {
               return Container(
