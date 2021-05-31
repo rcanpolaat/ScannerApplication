@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  firebase_ml_vision: ^0.12.0+1
+  firebase_ml_vision: ^0.9.10
   camera: ^0.8.1
   image_picker: ^0.7.4
   image : ^2.1.19
