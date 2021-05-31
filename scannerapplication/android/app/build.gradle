@@ -49,9 +49,6 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    dependencies {
-        api 'com.google.firebase:firebase-ml-vision-face-model:17.0.2'
-    }
 }
 
 flutter {
@@ -59,13 +56,11 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-analytics'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    api 'com.google.firebase:firebase-ml-vision-image-label-model:16.2.0'
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
 }
 
